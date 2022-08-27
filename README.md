@@ -19,6 +19,5 @@ In order to install EZBlog! you have to do the following steps:
 
 ## Credits
 
-- [Alessio92 (github.com)](https://github.com/Alessio92)
-[![Donate Me](https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg=100x)](https://www.paypal.com/donate/?hosted_button_id=ZRFPQU7M83LQL)
+- [Alessio92 (github.com)](https://github.com/Alessio92) [Donate me](https://www.paypal.com/donate/?hosted_button_id=ZRFPQU7M83LQL)
 
