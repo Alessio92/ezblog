@@ -8,6 +8,8 @@
 */
 
 $posts = get_all_posts();
+$count = count_posts();
+$pages = ceil($count / POSTS_PER_PAGE);
 ?>
 <div class="w-dyn-list">
     <div role="list" class="w-dyn-items">
@@ -28,4 +30,5 @@ $posts = get_all_posts();
 <?php } ?>
     </div>
 </div>
+<p style="margin-bottom: 0;margin-top: 40px;"><?=$count?> total posts - <?=$pages?> pages</p>
 <!--div class="button-wrapper"><a href="all-posts" class="button w-button">All Posts&nbsp;→</a></div-->

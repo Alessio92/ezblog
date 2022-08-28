@@ -19,7 +19,7 @@ if (isset($_POST['content'])) {
 
 ?>
 
-<div class="post-wrapper" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+<div class="post-wrapper">
    <div class="post-content">
       <div class="body-copy w-richtext">
          <h1>New post</h1>
