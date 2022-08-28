@@ -14,6 +14,7 @@ define('DECRIPTION',         '<b>EZBlog!</b> (easyblog) is a new, fast, powerful
 define('SOCIAL_TWITTER',     '');
 define('SOCIAL_FACEBOOK',    '');
 define('SOCIAL_INSTAGRAM',   '');
+define('SOCIAL_GITHUB',      '');
 
 // utils
 define('NOW',                 time());

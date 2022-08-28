@@ -32,6 +32,7 @@ if ($file_to_include && str_starts_with($file_to_include, __DIR__))
     <link href="css/milton-template.webflow.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/latofont.css" media="all">
     <link rel="stylesheet" href="css/style.css" media="all">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
   </head>
   <body>
     <div class="sidebar-wrapper">
@@ -46,6 +47,7 @@ if ($file_to_include && str_starts_with($file_to_include, __DIR__))
             <div class="grey-rule w-hidden-small w-hidden-tiny"></div>
         </nav>
         <div class="social-link-group">
+          <a href="<?=SOCIAL_GITHUB?>" class="social-icon-link w-inline-block"><img src="assets/gh.svg" width="25" alt=""></a>
           <a href="<?=SOCIAL_FACEBOOK?>" class="social-icon-link w-inline-block"><img src="assets/fb.svg" width="25" alt=""></a>
           <a href="<?=SOCIAL_INSTAGRAM?>" class="social-icon-link w-inline-block"><img src="assets/in.svg" width="25" alt=""></a>
           <a href="<?=SOCIAL_TWITTER?>" class="social-icon-link w-inline-block"><img src="assets/tw.svg" width="25" alt=""></a>
