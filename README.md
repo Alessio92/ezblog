@@ -9,6 +9,10 @@ In order to install EZBlog! you have to do the following steps:
 - Configure the `Credentials` field on `constants.php` (will change in the future)
 - Done
 
+## Demo
+
+[Alessio Carello EZBlog! Demo](https://alessiocarello.tk/mb/)
+
 ## Roadmap
 
 - 2022-08-26 - Start Development
