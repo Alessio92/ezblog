@@ -2,12 +2,12 @@
 /*
 .----------------------------.
 |      Alessio Carello       |
-|           EZBLOG           |
+|           EZBlog!           |
 |    2022-08-26T22:55:00Z    |
 '----------------------------'
 */
 
-require_once(__DIR__ . DIRECTORY_SEPARATOR . 'constants.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
 try {
     $db = new PDO(DBMS . ':' . DB_FILE_PATH);
 } catch(PDOException $e) {
