@@ -10,7 +10,8 @@
 // common
 define('NAME',               'EZBlog!');
 define('HOME',               'posts');
-define('DECRIPTION',         '<b>EZBlog!</b> (easyblog) is a new, fast, powerful and beautiful microblog software. I am creating it for fun and the purpose will be to host it on my website and then publish all my stuff.');
+define('DESCRIPTION',        '<b>EZBlog!</b> (easyblog) is a new, fast, powerful and beautiful microblog software. I am creating it for fun and the purpose will be to host it on my website and then publish all my stuff.');
+define('URL',                $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . str_replace(str_replace($_SERVER['PHP_SELF'], '', $_SERVER['SCRIPT_FILENAME']), '', __DIR__));
 define('SOCIAL_TWITTER',     '');
 define('SOCIAL_FACEBOOK',    '');
 define('SOCIAL_INSTAGRAM',   '');

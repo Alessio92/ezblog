@@ -17,6 +17,16 @@ if (is_dir(__DIR__ . DIRECTORY_SEPARATOR . INSTALL_FOLDER))
     die();
 }
 
+// check if user want to load feed rss
+$file_to_include = realpath(__DIR__ . DIRECTORY_SEPARATOR . get_route() . '.feed.php');
+/* If page exists, load it */
+if ($file_to_include && str_starts_with($file_to_include, __DIR__))
+{
+  require_once(__DIR__ . DIRECTORY_SEPARATOR . 'db.php');
+  require_once($file_to_include);
+  die();
+}
+
 $file_to_include = realpath(__DIR__ . DIRECTORY_SEPARATOR . get_route() . '.inc.php');
 /* If page exists, load it */
 if ($file_to_include && str_starts_with($file_to_include, __DIR__))
@@ -39,7 +49,7 @@ if ($file_to_include && str_starts_with($file_to_include, __DIR__))
       <div class="header">
         <a href="" aria-current="page" class="site-name w--current"><?=NAME?></a>
         <div class="grey-rule w-hidden-small w-hidden-tiny"></div>
-        <p class="site-description"><?=DECRIPTION?></p>
+        <p class="site-description"><?=DESCRIPTION?></p>
         <div class="grey-rule w-hidden-small w-hidden-tiny"></div>
         <nav class="navigation">
             <a href="./posts" class="nav-link">home</a>
