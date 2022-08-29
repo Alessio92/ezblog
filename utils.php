@@ -97,3 +97,13 @@ function timestamp_to_readable_time($timestamp) {
 
     return date('j F', $timestamp);
 }
+
+function redirect_to_path($path) {
+    header('Location: ' . str_replace(str_replace($_SERVER['PHP_SELF'], '', $_SERVER['SCRIPT_FILENAME']), '', __DIR__) . '/' . $path);
+}
+
+function is_logged_in() {
+    if (!isset($_COOKIE[TOKEN_KEY])) { return false; }
+
+    return $_COOKIE[TOKEN_KEY] == sha1($_SERVER['HTTP_HOST'] . NAME . USER . SECRET);
+}

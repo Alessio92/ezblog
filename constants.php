@@ -16,11 +16,18 @@ define('SOCIAL_FACEBOOK',    '');
 define('SOCIAL_INSTAGRAM',   '');
 define('SOCIAL_GITHUB',      '');
 
+// credentials
+define('TOKEN_KEY',           'ezblogtoken');
+define('USER',                'admin');
+define('PASSWORD',            'admin');
+define('SECRET',              '00000000-0000-0000-0000-000000000000');
+define('COOKIE_LIFETIME',     3600 * 24);
+
 // utils
 define('NOW',                 time());
 
 // posts
-define('POSTS_PER_PAGE',     9999);
+define('POSTS_PER_PAGE',      9999);
 
 // setup
 define('INSTALL_FOLDER',     'install');

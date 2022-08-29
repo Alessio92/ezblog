@@ -7,14 +7,21 @@
 '----------------------------'
 */
 
-if (isset($_POST['content'])) {
-    $new_content = $_POST['content'];
+if (!is_logged_in()) {
+   redirect_to_path('login');
+   die();
+}
 
-    $result = add_post($new_content);
-    $added = false;
-    if ($result > 0) {
-        $added = true;
-    }
+if (isset($_POST['content'])) {
+   $new_content = $_POST['content'];
+
+   $result = add_post($new_content);
+   $added = false;
+   if ($result > 0) {
+      $added = true;
+   }
+   $domain = $_SERVER['HTTP_HOST'];
+   setcookie(TOKEN_KEY, sha1($domain . NAME . USER . SECRET), NOW + COOKIE_LIFETIME, '/', $domain, false);
 }
 
 ?>

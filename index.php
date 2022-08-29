@@ -42,8 +42,15 @@ if ($file_to_include && str_starts_with($file_to_include, __DIR__))
         <p class="site-description"><?=DECRIPTION?></p>
         <div class="grey-rule w-hidden-small w-hidden-tiny"></div>
         <nav class="navigation">
-            <a href="./" class="nav-link">home</a>
-            <a href="./new" class="nav-link">new</a>
+            <a href="./posts" class="nav-link">home</a>
+            <?php
+            if (is_logged_in()) {
+              echo('<a href="./new" class="nav-link">new</a>');
+            } else {
+              echo('<a href="./login" class="nav-link">login</a>');
+            }
+
+            ?>
             <div class="grey-rule w-hidden-small w-hidden-tiny"></div>
         </nav>
         <div class="social-link-group">
@@ -70,5 +77,5 @@ if ($file_to_include && str_starts_with($file_to_include, __DIR__))
 }
 
 /* If not, redirect to HOME page */
-header('Location: ' . str_replace(str_replace($_SERVER['PHP_SELF'], '', $_SERVER['SCRIPT_FILENAME']), '', __DIR__) . '/' . HOME);
+redirect_to_path(HOME);
 ?>
