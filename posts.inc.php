@@ -7,9 +7,23 @@
 '----------------------------'
 */
 
-$posts = get_all_posts();
+$posts = array();
+$id = get_route(1);
+if (!$id) {
+    $found = get_post($id);
+    if ($found == null) {
+        echo('<h1>Post not found.</h1>');
+        die();
+    }
+    $posts[] = $found;
+}
+else {
+    $posts = get_all_posts();
+}
+
 $count = count_posts();
 $pages = ceil($count / POSTS_PER_PAGE);
+
 ?>
 <div class="w-dyn-list">
     <div role="list" class="w-dyn-items">
@@ -17,7 +31,7 @@ $pages = ceil($count / POSTS_PER_PAGE);
 
 <div class="post-wrapper">
     <div class="post-content">
-        <a class="blog-title-link w-inline-block">
+        <a href="posts/<?=$post['id']?>" class="blog-title-link w-inline-block">
             <h1 class="blog-title"><?=trim($post['post_content'])?></h1>
         </a>
         <div class="post-info-wrapper">
@@ -30,5 +44,10 @@ $pages = ceil($count / POSTS_PER_PAGE);
 <?php } ?>
     </div>
 </div>
-<p style="margin-bottom: 0;margin-top: 40px;"><?=$count?> total posts - <?=$pages?> pages</p>
-<!--div class="button-wrapper"><a href="all-posts" class="button w-button">All Posts&nbsp;→</a></div-->
+<?php
+if ($single_page) {
+    echo('<div class="button-wrapper"><a href="posts" class="button w-button">All Posts&nbsp;→</a></div>');
+} else {
+    echo('<p style="margin-bottom: 0;margin-top: 40px;">' . $count . ' total posts - ' . $pages .' pages</p>');
+}
+?>

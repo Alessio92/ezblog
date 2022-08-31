@@ -1,11 +1,15 @@
 <?php
 
-function get_route() {
+function get_route($pos = 0) {
     $full_route = str_replace(dirname($_SERVER['SCRIPT_NAME']), '', $_SERVER['REQUEST_URI']);
     $route_fragments = (parse_url($full_route, PHP_URL_PATH));
     $route = explode('/', trim($route_fragments, '/'));
 
-    return $route[0];
+    if ($pos >= count($route)) {
+        return false;
+    }
+
+    return $route[$pos];
 }
 
 function get_all_posts($post_timestamp = NOW, $posts_per_page = POSTS_PER_PAGE) {
@@ -28,6 +32,27 @@ function get_all_posts($post_timestamp = NOW, $posts_per_page = POSTS_PER_PAGE) 
     }
 
     return $rows;
+}
+
+function get_post($id) {
+    global $db;
+    if (empty($db)) {
+        echo('$db is empty');
+        return false;
+    }
+
+    // todo: Multipage (offset)
+
+    $query = $db->prepare('SELECT * FROM posts WHERE id = :post_id');
+    $query->bindParam(':post_id', $id, PDO::PARAM_INT);
+    $query->execute();
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($row)) {
+        return false;
+    }
+
+    return $row;
 }
 
 function add_post($post_content, $post_timestamp = NOW) {

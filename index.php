@@ -37,6 +37,7 @@ if ($file_to_include && str_starts_with($file_to_include, __DIR__))
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><?=NAME?></title>
+    <base href="<?=URL?>/" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="css/milton-template.webflow.css" rel="stylesheet" type="text/css">
