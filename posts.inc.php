@@ -9,13 +9,15 @@
 
 $posts = array();
 $id = get_route(1);
-if (!$id) {
+$single_page = false;
+if ($id != false) {
     $found = get_post($id);
     if ($found == null) {
         echo('<h1>Post not found.</h1>');
         die();
     }
     $posts[] = $found;
+    $single_page = true;
 }
 else {
     $posts = get_all_posts();
