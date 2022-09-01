@@ -22,7 +22,7 @@ $pages = ceil($count / POSTS_PER_PAGE);
 <item>
   <title><?=substr($content, 0, 32)?></title>  
   <description>
-  <![CDATA[ <img src="https://alessiocarello.tk/mb/assets/logo.png" /><a href="<?=$direct_link?>" target="_blank"><?=$content?></a> ]]>
+  <![CDATA[ <img src="<?=URL?>/assets/logo.png" /><a href="<?=$direct_link?>" target="_blank"><?=$content?></a> ]]>
   </description>
   <link><?=$direct_link?></link>
   <guid isPermaLink="true"><?='POST_#' . $post['id']?></guid>
