@@ -83,6 +83,60 @@ function count_posts() {
     return (int) $row['total_posts'];
 }
 
+function count_comments($post_ids = null) {
+    global $db;
+    if (empty($db)) {
+        return false;
+    }
+
+    $sql = 'SELECT post_id, COUNT(id) as total_comments FROM comments';
+
+    if ($post_ids != null) {
+        $sql .= ' WHERE post_id IN (' . str_repeat('?,', count($post_ids) - 1) . '?' . ')';
+    }
+
+    $sql .= ' GROUP BY post_id';
+
+    $query = $db->prepare($sql);
+    if ($post_ids != null) {
+        $query->execute($post_ids);
+    } else {
+        $query->execute();
+    }
+
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($rows)) {
+        return false;
+    }
+
+    $map = array();
+    foreach ($rows as $row) {
+        $map[$row['post_id']] = $row['total_comments'];
+    }
+    return $map;
+}
+
+function get_comments($post_id) {
+    global $db;
+    if (empty($db)) {
+        return false;
+    }
+
+    $sql = 'SELECT * FROM comments WHERE post_id = :post_id';
+
+    $query = $db->prepare('SELECT * FROM comments WHERE post_id = :post_id');
+    $query->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+    $query->execute();
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($rows)) {
+        return false;
+    }
+
+    return $rows;
+}
+
 function strong_rmdir($dir) {
     if (!file_exists($dir)) {
         return true;
