@@ -26,6 +26,7 @@ define('COOKIE_LIFETIME',     3600 * 24);
 
 // utils
 define('NOW',                 time());
+define('TIMEZONE',            new DateTimeZone('Europe/Rome'));
 
 // posts
 define('POSTS_PER_PAGE',      9999);

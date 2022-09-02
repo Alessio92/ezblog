@@ -70,6 +70,23 @@ function add_post($post_content, $post_timestamp = NOW) {
     return $db->lastInsertId();
 }
 
+function add_comment($post_id, $comment_author, $comment_content, $comment_timestamp = NOW) {
+    global $db;
+    if (empty($db)) {
+        echo('$db is empty');
+        return false;
+    }
+
+    $query = $db->prepare('INSERT INTO comments (comment_content, comment_timestamp, comment_author, post_id) VALUES (:comment_content, :comment_timestamp, :comment_author, :post_id)');
+    $query->bindParam(':comment_content', trim(strip_tags($comment_content)), PDO::PARAM_STR);
+    $query->bindParam(':comment_timestamp', $comment_timestamp, PDO::PARAM_INT);
+    $query->bindParam(':comment_author', trim(strip_tags($comment_author)), PDO::PARAM_STR);
+    $query->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+    $query->execute();
+
+    return $db->lastInsertId();
+}
+
 function count_posts() {
     global $db;
     if (empty($db)) {
@@ -174,7 +191,10 @@ function timestamp_to_readable_time($timestamp) {
         return floor($secs/(60 * 60)) . 'h';
     }
 
-    return date('j F', $timestamp);
+    $dt = new DateTime();
+    $dt->setTimezone(TIMEZONE);
+    $dt->setTimestamp($timestamp);
+    return $dt->format('Y-m-d, G:i');
 }
 
 function redirect_to_path($path) {
